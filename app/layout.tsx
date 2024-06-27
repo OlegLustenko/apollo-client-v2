@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { Cairo as FontSans } from 'next/font/google';
+import { Inter as FontSans } from 'next/font/google';
 import './globals.css';
 import { ApolloWrapper } from './ApolloWrapper';
 import { cn } from 'lib/utils';
@@ -24,7 +24,10 @@ export default function RootLayout({
     <html lang="en">
       <ApolloWrapper>
         <body
-          className={cn('bg-background min-h-screen font-sans antialiased')}
+          className={cn(
+            'bg-background min-h-screen font-sans antialiased',
+            fontSans.variable,
+          )}
         >
           {children}
           <Toaster />
