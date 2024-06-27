@@ -3,6 +3,7 @@
 import React, {
   ComponentProps,
   useEffect,
+  useRef,
   useState,
   useTransition,
 } from 'react';
@@ -43,7 +44,23 @@ type CreateOnCancel = (
 export const Post = ({ params }: { params: { postId: string } }) => {
   const {
     data: { post },
+    client,
   } = useSuspenseQuery(GET_POST_QUERY, { variables: { id: params.postId } });
+
+  const setPersistentValues = (data: PostValidation) => {
+    client.writeQuery({
+      query: GET_POST_QUERY,
+      variables: { id: params.postId },
+      data: {
+        post: {
+          ...post,
+          title: data.title,
+          body: data.body,
+        },
+      },
+    });
+  };
+
   const [updatePost] = useMutation(UPDATE_POST_MUTATION, {
     onError: (e) => {
       toast({
@@ -93,6 +110,7 @@ export const Post = ({ params }: { params: { postId: string } }) => {
       });
       setTitleMode('read');
       setBodyMode('read');
+      setPersistentValues(data);
     });
   };
 
@@ -105,6 +123,7 @@ export const Post = ({ params }: { params: { postId: string } }) => {
         },
       });
     });
+    setPersistentValues(data);
   };
 
   const onChangeDebounce = useDebouncedCallback(
