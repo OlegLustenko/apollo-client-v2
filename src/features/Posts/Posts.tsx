@@ -35,7 +35,10 @@ export const Posts = () => {
 
   return (
     <div className="relative pr-4">
-      <ul className="flex flex-col gap-2">
+      <ul
+        className="flex flex-col gap-2"
+        data-testid="posts-list"
+      >
         {filteredPosts.map((post) => {
           return (
             <Link
@@ -57,7 +60,10 @@ export const Posts = () => {
                       <h3 className="text-sm leading-6 text-gray-600">
                         Great post today!
                       </h3>
-                      <div className="mt-1 flex flex-wrap text-lg italic">
+                      <div
+                        className="mt-1 flex flex-wrap text-lg italic"
+                        data-testid="post-list-title"
+                      >
                         <StarIcon
                           className="items-baseline text-4xl text-amber-500"
                           height={25}

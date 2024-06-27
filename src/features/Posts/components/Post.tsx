@@ -172,7 +172,10 @@ export const Post = ({ params }: { params: { postId: string } }) => {
           <div className="flex flex-col gap-4 pt-6">
             <div className="flex justify-between">
               {isTitleReadMode && (
-                <h2 className="flex font-serif text-3xl italic underline underline-offset-8">
+                <h2
+                  className="flex font-serif text-3xl italic underline underline-offset-8"
+                  data-testid="post-preview-readmode-title"
+                >
                   <StarIcon
                     className="items-baseline text-amber-500"
                     height={50}
@@ -197,6 +200,7 @@ export const Post = ({ params }: { params: { postId: string } }) => {
                         <FormControl>
                           <Input
                             className="flex w-full font-serif text-lg italic underline underline-offset-8"
+                            data-testid="post-preview-editmode-title"
                             {...field}
                           />
                         </FormControl>
@@ -224,6 +228,7 @@ export const Post = ({ params }: { params: { postId: string } }) => {
                   <Button
                     type="submit"
                     className="min-w-24"
+                    data-testid="post-preview-editmode-title-save-button"
                   >
                     Save
                   </Button>
@@ -246,6 +251,7 @@ export const Post = ({ params }: { params: { postId: string } }) => {
                 width={25}
                 height={25}
                 className="hover:text-blue-800"
+                data-testid="post-preview-edit-icon"
                 onClick={() => {
                   const newMode = isBodyReadMode ? 'edit' : 'read';
                   setBodyMode(newMode);
@@ -259,6 +265,7 @@ export const Post = ({ params }: { params: { postId: string } }) => {
                   'whitespace-pre-line rounded-md border-y-2 p-2 text-2xl',
                   { 'animate-pulse text-orange-600': isBodyEditMode },
                 )}
+                data-testid="post-preview-readmode-body"
               >
                 {formValues.body}
               </p>
@@ -274,6 +281,7 @@ export const Post = ({ params }: { params: { postId: string } }) => {
                         <Textarea
                           placeholder="modify post content here"
                           className="min-h-44 border border-b-8 border-blue-400 text-2xl"
+                          data-testid="post-preview-editmode-body"
                           {...field}
                           onBlur={() => {
                             field.onBlur();
@@ -320,7 +328,10 @@ const AutosaveCheckbox = ({
   onChange?: (checked: boolean) => void;
 }) => {
   return (
-    <div className="items-top flex space-x-2">
+    <div
+      className="items-top flex space-x-2"
+      data-testid="autosave-checkbox"
+    >
       <Checkbox
         id="autoSave"
         checked={value}
