@@ -1,10 +1,9 @@
 import type { Metadata } from 'next';
-import { Ballet as FontSans } from 'next/font/google';
+import { Cairo as FontSans } from 'next/font/google';
 import './globals.css';
 import { ApolloWrapper } from './ApolloWrapper';
 import { cn } from 'lib/utils';
-import { PreloadQuery } from './ApolloClient';
-import { GET_POSTS_QUERY } from 'api/querries/posts.querries';
+import { Toaster } from 'components/ui/toaster';
 
 const fontSans = FontSans({
   subsets: ['latin'],
@@ -27,12 +26,8 @@ export default function RootLayout({
         <body
           className={cn('bg-background min-h-screen font-sans antialiased')}
         >
-          <PreloadQuery
-            query={GET_POSTS_QUERY}
-            variables={{ options: { paginate: { page: 1, limit: 5 } } }}
-          >
-            {children}
-          </PreloadQuery>
+          {children}
+          <Toaster />
         </body>
       </ApolloWrapper>
     </html>

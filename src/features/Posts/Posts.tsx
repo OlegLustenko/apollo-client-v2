@@ -21,10 +21,6 @@ export const Posts = () => {
     [];
 
   const onDelete = (postId: string) => {
-    if (!postId) {
-      return;
-    }
-
     startTransition(async () => {
       await deletePost({ variables: { id: postId } });
       setDeletedPost((deletedPosts) => {

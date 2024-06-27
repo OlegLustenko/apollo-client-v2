@@ -24,7 +24,8 @@
       }
     ],
     "paths": {
-      "gql": ["../src/core/services/apollo/__generated__"]
+      "gql": ["../src/core/services/apollo/__generated__"],
+      "app/*": ["../app/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],

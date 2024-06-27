@@ -1,6 +1,11 @@
 import React, { Suspense } from 'react';
 import { Posts } from 'features/Posts/Posts';
 import Link from 'next/link';
+import {
+  GET_POSTS_QUERY,
+  GET_POSTS_QUERY_DEFAULT_OPTIONS,
+} from 'api/querries/posts.querries';
+import { PreloadQuery } from 'app/ApolloClient';
 
 const Layout = ({ children }: { children: React.ReactNode }) => {
   return (
@@ -12,7 +17,12 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
         >
           <h1 className="text-4xl">Posts</h1>
         </Link>
-        <Posts />
+        <PreloadQuery
+          query={GET_POSTS_QUERY}
+          variables={GET_POSTS_QUERY_DEFAULT_OPTIONS.variables}
+        >
+          <Posts />
+        </PreloadQuery>
       </div>
       <div className="col-span-2">
         <div className="m-auto flex w-full justify-center pl-4">{children}</div>
