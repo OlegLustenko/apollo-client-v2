@@ -48,3 +48,10 @@ npm run dev
 ```bash
 npm run serve
 ```
+
+### To run tests
+make sure your app is up and running 
+
+```bash
+npm run e2e:local
+```
