@@ -24,8 +24,6 @@ This project is using [Next.js](https://nextjs.org/) and [Apollo](https://www.ap
 To run the project you must have Node.js installed
 You need to install packages 
 
-### Install packages
-
 ```bash
 npm install
 ```
@@ -35,8 +33,16 @@ npm install
 npm run dev
 ```
 
+### To run app for demo/production mode
+```bash
+npm run serve
+```
+
+### Afterwords
+Generally this project combines Next.js router, apollo prefetching with SSR.
+Testing was out of scope, but I still added a few tests for demonstration purposes.
+
+I didn't go hard with Application Architecture since the app is a small and 
+it's makes sense to apply more advanced refactorings incrementally
 
 
-## After words
-
-The goal of this project was to i

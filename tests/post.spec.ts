@@ -51,7 +51,7 @@ test.describe('Posts list', () => {
       .textContent();
 
     const postPreviewTitle = await page
-      .getByTestId('post-preview-title')
+      .getByTestId('post-preview-readmode-title')
       .textContent();
 
     expect(postPreviewTitle).toContain(postListTitle);
